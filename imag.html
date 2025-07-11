@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passport Size Converter</title>
+    <link rel="stylesheet" href="style_image.css" />
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo3.png" alt="Logo" />
+            </div>
+            <div class="options">
+                <a href="#" class="active">Passport Converter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="main-container">
+            <div class="heading">Convert Image to Passport Size</div>
+
+            <div class="enhancer-container">
+                <input type="file" id="upload" accept="image/*" />
+                <div class="button-row">
+                    <button class="enhancer-btn" onclick="convertToPassport()">Convert</button>
+                    <button class="enhancer-btn" onclick="download()">Download</button>
+                </div>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadInput = document.getElementById("upload");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        let img = new Image();
+
+        uploadInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.onload = () => {
+                    drawPassportImage(img);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function drawPassportImage(image) {
+            const targetWidth = 413;
+            const targetHeight = 531;
+
+            canvas.width = targetWidth;
+            canvas.height = targetHeight;
+
+            const aspectRatio = image.width / image.height;
+            let newWidth = targetWidth;
+            let newHeight = targetHeight;
+
+            if (aspectRatio > targetWidth / targetHeight) {
+                newHeight = targetHeight;
+                newWidth = aspectRatio * newHeight;
+            } else {
+                newWidth = targetWidth;
+                newHeight = newWidth / aspectRatio;
+            }
+
+            const offsetX = (targetWidth - newWidth) / 2;
+            const offsetY = (targetHeight - newHeight) / 2;
+
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(image, offsetX, offsetY, newWidth, newHeight);
+        }
+
+        function convertToPassport() {
+            if (img.src) {
+                drawPassportImage(img);
+            }
+        }
+
+        function download() {
+            const link = document.createElement('a');
+            link.download = 'passport-photo.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+    </script>
+</body>
+
+</html>

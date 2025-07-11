@@ -1,0 +1,265 @@
+/* Base styles (already in your file) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: black;
+}
+
+.nav-bar {
+  position: fixed;
+  height: 10vh;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.nav-container {
+  background-color: rgba(80, 80, 80, 0.789);
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 100%;
+  width: 140px;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  position: fixed;
+  top: 10vh;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  padding: 5px;
+}
+
+.left {
+  width: 75%;
+  padding: 20px;
+  background-color: rgba(80, 80, 80, 0.789);
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.left-container {
+  padding: 20px;
+}
+
+.left-container h2 {
+  margin-bottom: 20px;
+}
+
+.left-container input,
+.left-container select,
+.left-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  color: black;
+}
+
+.left-container button {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.left-container button:hover {
+  background-color: darkorange;
+}
+
+#result {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.right {
+  width: 25%;
+  padding: 20px;
+  background-color: rgba(80, 80, 80, 0.789);
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.right-container h2 {
+  margin-bottom: 15px;
+}
+
+.right-container ul {
+  list-style: none;
+}
+
+.right-container ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+}
+
+.right-container ul li:hover {
+  color: orange;
+}
+
+/* 1300px to 400px */
+@media (max-width: 1300px) {
+  .left {
+    width: 70%;
+  }
+
+  .right {
+    width: 30%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .left {
+    width: 68%;
+  }
+
+  .right {
+    width: 32%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .left {
+    width: 65%;
+  }
+
+  .right {
+    width: 35%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .left {
+    width: 60%;
+  }
+
+  .right {
+    width: 40%;
+  }
+}
+
+@media (max-width: 900px) {
+  .left {
+    width: 55%;
+  }
+
+  .right {
+    width: 45%;
+  }
+}
+
+@media (max-width: 800px) {
+  .left {
+    width: 50%;
+  }
+
+  .right {
+    width: 50%;
+  }
+}
+
+@media (max-width: 700px) {
+  .left {
+    width: 55%;
+  }
+
+  .right {
+    width: 45%;
+  }
+
+  .left-container input,
+  .left-container select,
+  .left-container button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    flex-direction: row; /* prevent column layout */
+  }
+
+  .left {
+    width: 60%;
+  }
+
+  .right {
+    width: 40%;
+  }
+
+  .left-container h2,
+  .right-container h2 {
+    font-size: 16px;
+  }
+
+  .left-container input,
+  .left-container select,
+  .left-container button {
+    padding: 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 500px) {
+  .left {
+    width: 65%;
+  }
+
+  .right {
+    width: 35%;
+  }
+
+  .right-container ul li {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .left {
+    width: 68%;
+  }
+
+  .right {
+    width: 32%;
+  }
+
+  .left-container h2,
+  .right-container h2 {
+    font-size: 14px;
+  }
+
+  .left-container input,
+  .left-container select,
+  .left-container button {
+    padding: 6px;
+    font-size: 12px;
+  }
+}

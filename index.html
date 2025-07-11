@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradePointPro | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo3.png" alt="Logo">
+            </div>
+            <div class="options">
+                <select id="tools" onchange="navigateTool()">
+                    <option selected disabled>Tools</option>
+                    <option value="gpa.html">GPA Calculator</option>
+                    <option value="cgpa.html">CGPA Calculator</option>
+                    <option value="sign.html">Sign Conversion</option>
+                    <option value="currency.html">Currency Conversion</option>
+                    <option value="currency.html">image enhancer</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <div class="main">
+        <div class="main-container home-content">
+            <div class="heading">
+                <p><b>Welcome to GradePointPro!</b></p>
+                <p>Your all-in-one academic and utility calculator suite.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card" id="feature-card-1">
+                    <h3>🎓 GPA & CGPA</h3>
+                    <p>Calculate your grades quickly and accurately using our GPA/CGPA calculators.</p>
+                </div>
+                <div class="feature-card" id="feature-card-2">
+                    <h3>🧮 Basic Calculator</h3>
+                    <p>Use this tool for standard math operations like addition, subtraction, etc.</p>
+                </div>
+                <div class="feature-card" id="feature-card-3">
+                    <h3>🔁 Sign Conversion</h3>
+                    <p>Convert between different number systems and notations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigateTool() {
+            const tool = document.getElementById("tools").value;
+            if (tool) window.location.href = tool;
+        }
+        document.getElementById('feature-card-1').forEach(card => {
+            card.addEventListener('click', () => {
+                const link = card.getAttribute('gpa.html');
+                if (link) window.location.href = link;
+            });
+        });
+        
+    </script>
+</body>
+
+</html>

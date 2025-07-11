@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit Converter</title>
+  <link rel="stylesheet" href="style_sign.css" />
+</head>
+<body>
+  <div class="nav-bar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo3.png" alt="Logo" />
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="left-container">
+        <h2>Unit Converter</h2>
+        <label for="inputValue">Enter value:</label>
+        <input type="number" id="inputValue" placeholder="Enter value" />
+
+        <label for="fromUnit">From:</label>
+        <select id="fromUnit"></select>
+
+        <label for="toUnit">To:</label>
+        <select id="toUnit"></select>
+
+        <button onclick="convert()">Convert</button>
+
+        <p id="result"></p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="right-container">
+        <h2>Select Conversion Type</h2>
+        <ul>
+          <li onclick="setType('Length')">Length</li>
+          <li onclick="setType('Temperature')">Temperature</li>
+          <li onclick="setType('Weight')">Weight</li>
+          <li onclick="setType('Time')">Time</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const unitOptions = {
+      Length: ['Meters', 'Feet'],
+      Temperature: ['Celsius', 'Fahrenheit'],
+      Weight: ['Kilograms', 'Pounds'],
+      Time: ['Seconds', 'Minutes']
+    };
+
+    let currentType = 'Length'; // Default
+
+    function setType(type) {
+      currentType = type;
+      updateUnitDropdowns();
+      document.getElementById("result").innerText = '';
+    }
+
+    function updateUnitDropdowns() {
+      const fromUnit = document.getElementById("fromUnit");
+      const toUnit = document.getElementById("toUnit");
+      fromUnit.innerHTML = '';
+      toUnit.innerHTML = '';
+      unitOptions[currentType].forEach(unit => {
+        const option1 = document.createElement('option');
+        option1.value = unit;
+        option1.textContent = unit;
+        fromUnit.appendChild(option1);
+
+        const option2 = document.createElement('option');
+        option2.value = unit;
+        option2.textContent = unit;
+        toUnit.appendChild(option2);
+      });
+    }
+
+    function convert() {
+      const input = parseFloat(document.getElementById("inputValue").value);
+      const from = document.getElementById("fromUnit").value;
+      const to = document.getElementById("toUnit").value;
+      let result;
+
+      if (currentType === 'Length') {
+        if (from === 'Meters' && to === 'Feet') result = input * 3.28084;
+        else if (from === 'Feet' && to === 'Meters') result = input / 3.28084;
+        else result = input;
+      }
+
+      else if (currentType === 'Temperature') {
+        if (from === 'Celsius' && to === 'Fahrenheit') result = input * 9/5 + 32;
+        else if (from === 'Fahrenheit' && to === 'Celsius') result = (input - 32) * 5/9;
+        else result = input;
+      }
+
+      else if (currentType === 'Weight') {
+        if (from === 'Kilograms' && to === 'Pounds') result = input * 2.20462;
+        else if (from === 'Pounds' && to === 'Kilograms') result = input / 2.20462;
+        else result = input;
+      }
+
+      else if (currentType === 'Time') {
+        if (from === 'Seconds' && to === 'Minutes') result = input / 60;
+        else if (from === 'Minutes' && to === 'Seconds') result = input * 60;
+        else result = input;
+      }
+
+      document.getElementById("result").innerText = `Result: ${result}`;
+    }
+
+    // Initial load
+    window.onload = () => {
+      setType('Length');
+    };
+  </script>
+</body>
+</html>

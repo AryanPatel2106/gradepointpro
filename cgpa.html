@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcualte xyz</title>
+    <link rel="stylesheet" href="style_cgpa.css">
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo3.png" alt="">
+            </div>
+            <div class="options">
+                <a href="gpa.html" class="option">GPA Calculator</a>
+                <a href="cgpa.html" class="option active">CGPA Calculator</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-container">
+            <div class="heading">
+                <p id="one"><b>Hello!</b></p>
+                <p id="two">I can assist you in calculating your</p>
+                <p id="type">CGPA (Cumulative Grade Point Average).</p>
+            </div>
+            <div class="subjects-container-main">
+                <div class="subjects-container">
+                    <div class="subject">
+                        <div class="subject-number">
+                            Semister: 1
+                        </div>
+                        <input type="number" class="credit" placeholder="credits">
+                        <input type="number" class="gpa" placeholder="gpa">
+                    </div>
+                    <div class="subject">
+                        <div class="subject-number">
+                            Semister: 2
+                        </div>
+                        <input type="number" class="credit" placeholder="credits">
+                        <input type="number" class="gpa" placeholder="gpa">
+                    </div>
+                    <div class="subject">
+                        <div class="subject-number">
+                            Semister: 3
+                        </div>
+                        <input type="number" class="credit" placeholder="credits">
+                        <input type="number" class="gpa" placeholder="gpa">
+                    </div>
+                    <div class="subject">
+                        <div class="subject-number">
+                            Semister: 4
+                        </div>
+                        <input type="number" class="credit" placeholder="credits">
+                        <input type="number" class="gpa" placeholder="gpa">
+                    </div>
+                </div>
+            </div>
+            <div class="output">
+                <button onclick="calculateGPA()" class="final">Final GPA</button>
+                <div class="result"></div>
+                <button onclick="addsubject()" class="add">add subject</button>
+            </div>
+        </div>
+    </div>
+    <script src="script_cgpa.js"></script>
+</body>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate xyz</title>
+    <link rel="stylesheet" href="style_gpa.css">
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo3.png" alt="">
+            </div>
+            <div class="options">
+                <a href="gpa.html" class="option active">GPA Calculator</a>
+                <a href="cgpa.html" class="option">CGPA Calculator</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-container">
+            <div class="heading">
+                <p id="one"><b>Hello!</b></p>
+                <p id="two">I can assist you in calculating your</p>
+                <p id="type">GPA (Grade Point Average).</p>
+            </div>
+            <div class="subjects-container-main">
+                <div class="subjects-container">
+                    <div class="subject">
+                        <div class="subject-number">
+                            Subject: 1
+                        </div>
+                        <select class="credit">
+                            <option value="">credit</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                        </select>
+                        <select class="grade">
+                            <option value="">grade</option>
+                            <option value="S">S</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="N">N</option>
+                        </select>
+                    </div>
+                    <div class="subject">
+                        <div class="subject-number">
+                            Subject: 2
+                        </div>
+                        <select class="credit">
+                            <option value="">credit</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                        </select>
+                        <select class="grade">
+                            <option value="">grade</option>
+                            <option value="S">S</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="N">N</option>
+                        </select>
+                    </div>
+                    <div class="subject">
+                        <div class="subject-number">
+                            Subject: 3
+                        </div>
+                        <select class="credit">
+                            <option value="">credit</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                        </select>
+                        <select class="grade">
+                            <option value="">grade</option>
+                            <option value="S">S</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="N">N</option>
+                        </select>
+                    </div>
+                    <div class="subject">
+                        <div class="subject-number">
+                            Subject: 4
+                        </div>
+                        <select class="credit">
+                            <option value="">credit</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                        </select>
+                        <select class="grade">
+                            <option value="">grade</option>
+                            <option value="S">S</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="N">N</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="output">
+                <button onclick="calculateGPA()" class="final">Final GPA</button>
+                <div class="result"></div>
+                <button onclick="addsubject()" class="add">add subject</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

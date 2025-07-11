@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="style_currency.css">
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo3.png" alt="">
+            </div>
+            <div class="options">
+                <a href="#" class="option active">Currency Converter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="main-container">
+            <div class="heading">
+                <p id="one"><b>Hello!</b></p>
+                <p id="two">I can assist you in converting</p>
+                <p id="type">currencies in real-time.</p>
+            </div>
+
+            <div class="subjects-container-main">
+                <div class="subjects-container">
+                    <div class="subject">
+                        <select id="fromCurrency" class="gpa"></select>
+                        <input type="number" id="amount" class="credit" placeholder="Enter amount">
+                        <select id="toCurrency" class="gpa"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output">
+                <button onclick="convertCurrency()" class="final">Convert</button>
+                <div class="result" id="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const currencies = ["USD", "INR", "EUR", "GBP", "JPY"];
+        let rates = {};
+
+        async function fetchLiveRates() {
+            const supportedCurrencies = ["USD", "INR", "EUR", "GBP", "JPY"];
+            rates = {};
+
+            for (const base of supportedCurrencies) {
+                const response = await fetch(`https://open.er-api.com/v6/latest/${base}`);
+                const data = await response.json();
+
+                if (data.result === "success") {
+                    rates[base] = {};
+                    for (const target of supportedCurrencies) {
+                        if (base !== target) {
+                            rates[base][target] = data.rates[target];
+                        }
+                    }
+                } else {
+                    console.error(`Failed to fetch for ${base}`);
+                }
+            }
+
+            console.log("Live rates loaded:", rates);
+        }
+
+        window.onload = async () => {
+            const fromCurrency = document.getElementById("fromCurrency");
+            const toCurrency = document.getElementById("toCurrency");
+
+            // Populate dropdowns
+            currencies.forEach(cur => {
+                fromCurrency.innerHTML += `<option value="${cur}">${cur}</option>`;
+                toCurrency.innerHTML += `<option value="${cur}">${cur}</option>`;
+            });
+
+            fromCurrency.value = "USD";
+            toCurrency.value = "INR";
+
+            await fetchLiveRates(); // Get live rates after the page loads
+        };
+
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const from = document.getElementById("fromCurrency").value;
+            const to = document.getElementById("toCurrency").value;
+
+            if (isNaN(amount)) {
+                document.getElementById("result").innerText = "Enter a valid number.";
+                return;
+            }
+
+            if (from === to) {
+                document.getElementById("result").innerText = `${amount} ${from} = ${amount} ${to}`;
+                return;
+            }
+
+            const rate = rates[from]?.[to];
+            if (!rate) {
+                document.getElementById("result").innerText = "Rate not available. Try again.";
+                return;
+            }
+
+            const converted = amount * rate;
+            document.getElementById("result").innerText = `${amount} ${from} = ${converted.toFixed(2)} ${to}`;
+        }
+
+
+    </script>
+</body>
+
+</html>
